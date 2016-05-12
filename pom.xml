@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.rest4hub</groupId>
     <artifactId>ibf</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,6 +17,14 @@
         <connection>scm:git:git://github.com/kevinsawicki/github-maven-example.git</connection>
         <developerConnection>scm:git:git@github.com:franciscocpg/ibf.git</developerConnection>
     </scm>
+    
+    <distributionManagement>
+        <repository>
+            <id>ibf</id>
+            <name>IBF</name>
+            <url>git:releases://git@github.com:franciscocpg/ibf.git</url>
+        </repository>
+    </distributionManagement>
     
     <build>
         <plugins>
