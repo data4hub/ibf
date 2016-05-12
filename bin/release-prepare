@@ -1,0 +1,4 @@
+#!/bin/bash
+clear
+set -e
+mvn -B -DautoVersionSubmodules=true release:clean release:prepare
