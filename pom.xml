@@ -37,7 +37,15 @@
                 </configuration>
             </plugin>
         </plugins>
+        <extensions>
+            <extension>
+                <groupId>ar.com.synergian</groupId>
+                <artifactId>wagon-git</artifactId>
+                <version>0.2.5</version>
+            </extension>
+        </extensions>
     </build>
+    
     <dependencies>
         <dependency>
             <groupId>com.github.stefanbirkner</groupId>
@@ -58,4 +66,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+        
+    <pluginRepositories>
+        <pluginRepository>
+            <id>synergian-repo</id>
+            <url>https://raw.github.com/synergian/wagon-git/releases</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
