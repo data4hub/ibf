@@ -1,4 +1,4 @@
-package com.rest4hub;
+package com.rest4hub.ifb.example;
 
 import com.rest4hub.ibf.BannerPrinter;
 

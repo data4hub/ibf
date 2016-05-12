@@ -41,9 +41,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <mainClass>com.rest4hub.App</mainClass>
-                </configuration>
             </plugin>
         </plugins>
     </build>
