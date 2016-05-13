@@ -29,17 +29,14 @@ public class BannerPrinter {
     private static final String DEFAULT_BANNER_LOCATION = "banner.txt";
     private static Map<String, String> envAndProperties;
 
-    static {
-        initEnvAndProperties();
-    }
-
     @SuppressWarnings("unchecked")
-    private static void initEnvAndProperties() {
+    private static void loadEnvAndProperties() {
         envAndProperties = new HashMap(System.getProperties());
         envAndProperties.putAll(System.getenv());
     }
 
     public static void print() {
+        loadEnvAndProperties();
         String location = envAndProperties.getOrDefault(
                 BANNER_LOCATION_PROPERTY,
                 DEFAULT_BANNER_LOCATION);
@@ -73,7 +70,7 @@ public class BannerPrinter {
     }
 
     private static String replaceEnvAndProperties(String banner) {
-        String pattern = "\\$\\{([A-Za-z0-9!]+)\\}";
+        String pattern = "\\$\\{([A-Za-z0-9!_]+)\\}";
         Pattern expr = Pattern.compile(pattern);
         Matcher matcher = expr.matcher(banner);
         while (matcher.find()) {

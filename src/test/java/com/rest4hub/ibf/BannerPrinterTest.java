@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.lang.reflect.Method;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -36,7 +35,7 @@ public class BannerPrinterTest {
     private static final String TMP_BANNER_PATH = "/tmp/banner.txt";
     private static final String TMP_BANNER_TEXT = "im tmp";
 
-    private static final String VAR = "VAR";
+    private static final String VAR = "VAR_TEST";
     private static final String BANNER_TEXT_WITH_VAR = BANNER_TEXT + " ${" + VAR + "!dev}";
     @Rule
     public final EnvironmentVariables environmentVariables = new EnvironmentVariables();
@@ -49,13 +48,6 @@ public class BannerPrinterTest {
     @Before
     public void setUp() throws Exception {
         redirectSystemOutStream();
-        reloadInitEnvAndProperties();
-    }
-
-    private void reloadInitEnvAndProperties() throws Exception {
-        Method initEnvAndProperties = BannerPrinter.class.getDeclaredMethod("initEnvAndProperties");
-        initEnvAndProperties.setAccessible(true);
-        initEnvAndProperties.invoke(null);
     }
 
     private void redirectSystemOutStream() {
@@ -107,7 +99,6 @@ public class BannerPrinterTest {
     @Test
     public void whenIHaveABannerWithEnvVarAssigned_shouldPrintWithVarValue() throws Exception {
         environmentVariables.set(VAR, "ENV");
-        reloadInitEnvAndProperties();
         printBanner(BANNER_PATH, BANNER_TEXT_WITH_VAR);
         assertEquals(BANNER_TEXT + " ENV", printBuffer.toString());
     }
@@ -135,7 +126,6 @@ public class BannerPrinterTest {
 
     private void setProperty(String key, String value) throws Exception {
         System.setProperty(key, value);
-        reloadInitEnvAndProperties();
     }
 
 }
