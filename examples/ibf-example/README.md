@@ -1,6 +1,6 @@
 # Example
 
-Run this commands at **ibf-example** folder and see the results
+Run this commands at **ibf-example** folder and check the results
 
 ### Getting default value
 `mvn exec:java -Dexec.mainClass="com.rest4hub.ifb.example.App"`
